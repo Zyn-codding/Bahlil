@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WARNING (Demo Edukasi)</title>
+<style>
+  body {
+    background-color: #050014;
+    color: red;
+    font-family: monospace;
+    text-align: center;
+    padding-top: 80px;
+  }
+  h1 {
+    font-size: 2rem;
+    letter-spacing: 5px;
+    color: #ff0000;
+    text-shadow: 0 0 10px red, 0 0 20px red;
+  }
+  p {
+    font-size: 1rem;
+    margin: 10px 0;
+  }
+  #countdown {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 20px 0;
+    text-shadow: 0 0 10px red;
+  }
+  input {
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    width: 200px;
+    text-align: center;
+  }
+  button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-shadow: 0 0 5px black;
+  }
+  button:hover {
+    background-color: darkred;
+  }
+  .note {
+    margin-top: 40px;
+    color: #ffcccc;
+    font-size: 0.9rem;
+  }
+</style>
+</head>
+<body>
+
+  <h1>!!! WARNING !!!</h1>
+  <p>Silahkan TF 1.000.000 ke rekening kami.<br>
+  Jika tidak TF dalam 5 jam, data Anda akan kami sebar.</p>
+
+  <div id="countdown">05:00:00</div>
+
+  <p>Masukkan password untuk membuka:</p>
+  <input type="password" id="password" placeholder="Password">
+  <br>
+  <button id="unlockBtn">Unlock</button>
+
+  <div class="note">⚠️ Tampilan ini hanya simulasi UI untuk edukasi. Tidak ada ancaman atau fungsi berbahaya.</div>
+
+<script>
+  // Set waktu countdown (5 jam)
+  let waktu = 5 * 60 * 60; // dalam detik
+  const countdownEl = document.getElementById("countdown");
+
+  function updateCountdown() {
+    let jam = Math.floor(waktu / 3600);
+    let menit = Math.floor((waktu % 3600) / 60);
+    let detik = waktu % 60;
+    countdownEl.textContent =
+      String(jam).padStart(2, "0") + ":" +
+      String(menit).padStart(2, "0") + ":" +
+      String(detik).padStart(2, "0");
+    if (waktu > 0) {
+      waktu--;
+    }
+  }
+  setInterval(updateCountdown, 1000);
+
+  // Tombol Unlock (dummy)
+  document.getElementById("unlockBtn").addEventListener("click", function() {
+    const pass = document.getElementById("password").value;
+    alert("Password yang dimasukkan: " + pass + "\n(Ini hanya simulasi, tidak membuka apapun)");
+  });
+
+  // Jalankan pertama kali agar tampilan awal langsung benar
+  updateCountdown();
+</script>
+
+</body>
+</html>
